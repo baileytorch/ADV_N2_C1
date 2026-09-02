@@ -14,6 +14,18 @@ string abrirCofre(bool tieneLlave){
     return respuesta;
 }
 
+string entrarArea(int nivel,bool tieneLlave){
+    string respuesta = "";
+    if (nivel >= 7 && tieneLlave == true)
+    {
+        respuesta = "Ingresando al área!";
+    }else{
+        respuesta = "No puede ingresar aun...";
+    }
+    
+    return respuesta;
+}
+
 int main(){
     // Esto es un comentario de 1 línea
     /*
@@ -30,6 +42,7 @@ int main(){
     bool esAlcaldeDelfin = false;
     float ratingDelfin = 2.36;
     bool tieneLlave = false;
+    int nivel = 1;
 
     // Definición del Enemigo
     string nombreTigresa = "Tigresa del Oriente";
@@ -46,14 +59,18 @@ int main(){
     cout << "Nombre Personaje: " << nombreDelfin << endl;
     cout << "Vida Personaje: " << vidaDelfin << endl;
     cout << "Edad Personaje: " << edadDelfin << endl;
+    cout << "Nivel: " << nivel << endl;
     cout << "Es alcalde: " << esAlcaldeDelfin << endl;
     cout << "Rating: " << ratingDelfin << endl;
     cout << "Abrir Cofre: " << abrirCofre(tieneLlave) << endl;
+    cout << "Area Nivel 7\nBloqueada con llave" << endl;
+    cout << "Ingresa? " << entrarArea(nivel,tieneLlave) << endl;
 
     cout << "\n" <<endl;
     int vidaFinal = 0;
     vidaFinal = vidaDelfin - ratingTigresa;
     vidaDelfin = vidaFinal;
+    nivel = 4;
     tieneLlave = true;
 
     cout << "Ficha Técnica Final" << endl;
@@ -61,8 +78,11 @@ int main(){
     cout << "Nombre Personaje: " << nombreDelfin << endl;
     cout << "Vida Personaje: " << vidaDelfin << endl;
     cout << "Edad Personaje: " << edadDelfin << endl;
+    cout << "Nivel: " << nivel << endl;
     cout << "Es alcalde: " << esAlcaldeDelfin << endl;
     cout << "Rating: " << ratingDelfin << endl;
     cout << "Abrir Cofre: " << abrirCofre(tieneLlave) << endl;
+    cout << "Area Nivel 7\nBloqueada con llave" << endl;
+    cout << "Ingresa? " << entrarArea(nivel,tieneLlave) << endl;
     return 0;
 }
