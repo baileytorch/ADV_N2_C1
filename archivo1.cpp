@@ -2,6 +2,18 @@
 #include <windows.h>
 using namespace std;
 
+string abrirCofre(bool tieneLlave){
+    string respuesta = "";
+    if (tieneLlave == true)
+    {
+        respuesta = "Cofre Abierto!";
+    }else{
+        respuesta = "Vaya a buscar la llave!";
+    }
+    
+    return respuesta;
+}
+
 int main(){
     // Esto es un comentario de 1 línea
     /*
@@ -17,6 +29,7 @@ int main(){
     int edadDelfin = 48;
     bool esAlcaldeDelfin = false;
     float ratingDelfin = 2.36;
+    bool tieneLlave = false;
 
     // Definición del Enemigo
     string nombreTigresa = "Tigresa del Oriente";
@@ -35,10 +48,13 @@ int main(){
     cout << "Edad Personaje: " << edadDelfin << endl;
     cout << "Es alcalde: " << esAlcaldeDelfin << endl;
     cout << "Rating: " << ratingDelfin << endl;
+    cout << "Abrir Cofre: " << abrirCofre(tieneLlave) << endl;
 
+    cout << "\n" <<endl;
     int vidaFinal = 0;
     vidaFinal = vidaDelfin - ratingTigresa;
     vidaDelfin = vidaFinal;
+    tieneLlave = true;
 
     cout << "Ficha Técnica Final" << endl;
     cout << "=============" << endl;
@@ -47,5 +63,6 @@ int main(){
     cout << "Edad Personaje: " << edadDelfin << endl;
     cout << "Es alcalde: " << esAlcaldeDelfin << endl;
     cout << "Rating: " << ratingDelfin << endl;
+    cout << "Abrir Cofre: " << abrirCofre(tieneLlave) << endl;
     return 0;
 }

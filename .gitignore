@@ -4,3 +4,4 @@ archivo1.obj
 archivo1.pdb
 vc140.pdb
 .vscode/tasks.json
+.vscode/c_cpp_properties.json
