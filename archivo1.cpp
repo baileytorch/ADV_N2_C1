@@ -2,31 +2,55 @@
 #include <windows.h>
 using namespace std;
 
-string abrirCofre(bool tieneLlave){
+string abrirCofre(bool tieneLlave)
+{
     string respuesta = "";
     if (tieneLlave == true)
     {
         respuesta = "Cofre Abierto!";
-    }else{
+    }
+    else
+    {
         respuesta = "Vaya a buscar la llave!";
     }
-    
+
     return respuesta;
 }
 
-string entrarArea(int nivel,bool tieneLlave){
+string entrarArea(int nivel, bool tieneLlave)
+{
     string respuesta = "";
     if (nivel >= 7 && tieneLlave == true)
     {
         respuesta = "Ingresando al área!";
-    }else{
+    }
+    else
+    {
         respuesta = "No puede ingresar aun...";
     }
-    
+
     return respuesta;
 }
 
-int main(){
+string mostrarFichaTecnica(string nombre, int vida, int edad, int nivel, float rating, bool llave)
+{
+    string respuesta = "";
+    cout << "" << endl;
+    cout << "Ficha Técnica Inicial" << endl;
+    cout << "=============" << endl;
+    cout << "Nombre Personaje: " << nombre << endl;
+    cout << "Vida Personaje: " << vida << endl;
+    cout << "Edad Personaje: " << edad << endl;
+    cout << "Nivel: " << nivel << endl;
+    cout << "Rating: " << rating << endl;
+    cout << "Abrir Cofre: " << abrirCofre(llave) << endl;
+    cout << "Area Nivel 7\nBloqueada con llave" << endl;
+    cout << "Ingresa? " << entrarArea(nivel, llave) << endl;
+    return respuesta;
+}
+
+int main()
+{
     // Esto es un comentario de 1 línea
     /*
     Esto es un comentario de múltiples líneas
@@ -40,49 +64,68 @@ int main(){
     int vidaDelfin = 500;
     int edadDelfin = 48;
     bool esAlcaldeDelfin = false;
-    float ratingDelfin = 2.36;
-    bool tieneLlave = false;
-    int nivel = 1;
+    float ratingDelfin = 49.5;
+    bool llaveDelfin = false;
+    int nivelDelfin = 1;
 
     // Definición del Enemigo
     string nombreTigresa = "Tigresa del Oriente";
     int vidaTigresa = 500;
     int edadTigresa = 80;
     bool esAlcaldeTigresa = false;
-    float ratingTigresa = 4.0;
+    float ratingTigresa = 55.0;
+    bool llaveTigresa = false;
+    int nivelTigresa = 1;
 
     // Con esta línea muestro un mensaje mediante el terminal
     cout << "Buen día queridos estudiantes" << endl;
 
-    cout << "Ficha Técnica Inicial" << endl;
-    cout << "=============" << endl;
-    cout << "Nombre Personaje: " << nombreDelfin << endl;
-    cout << "Vida Personaje: " << vidaDelfin << endl;
-    cout << "Edad Personaje: " << edadDelfin << endl;
-    cout << "Nivel: " << nivel << endl;
-    cout << "Es alcalde: " << esAlcaldeDelfin << endl;
-    cout << "Rating: " << ratingDelfin << endl;
-    cout << "Abrir Cofre: " << abrirCofre(tieneLlave) << endl;
-    cout << "Area Nivel 7\nBloqueada con llave" << endl;
-    cout << "Ingresa? " << entrarArea(nivel,tieneLlave) << endl;
+    mostrarFichaTecnica(nombreDelfin, vidaDelfin, edadDelfin, nivelDelfin, ratingDelfin, llaveDelfin);
+    mostrarFichaTecnica(nombreTigresa, vidaTigresa, edadTigresa, nivelTigresa, ratingTigresa, llaveTigresa);
 
-    cout << "\n" <<endl;
-    int vidaFinal = 0;
-    vidaFinal = vidaDelfin - ratingTigresa;
-    vidaDelfin = vidaFinal;
-    nivel = 4;
-    tieneLlave = true;
+    cout << "\n"
+         << endl;
 
-    cout << "Ficha Técnica Final" << endl;
-    cout << "=============" << endl;
-    cout << "Nombre Personaje: " << nombreDelfin << endl;
-    cout << "Vida Personaje: " << vidaDelfin << endl;
-    cout << "Edad Personaje: " << edadDelfin << endl;
-    cout << "Nivel: " << nivel << endl;
-    cout << "Es alcalde: " << esAlcaldeDelfin << endl;
-    cout << "Rating: " << ratingDelfin << endl;
-    cout << "Abrir Cofre: " << abrirCofre(tieneLlave) << endl;
-    cout << "Area Nivel 7\nBloqueada con llave" << endl;
-    cout << "Ingresa? " << entrarArea(nivel,tieneLlave) << endl;
+    // Un ciclo WHILE se ejecuta mientras se cumpla una condición
+    // while (vidaDelfin > 0 && vidaTigresa > 0)
+    // {
+    //     if (ratingTigresa > vidaDelfin){
+    //         vidaDelfin = 0;
+    //     }else{
+    //         vidaDelfin = vidaDelfin - ratingTigresa;
+    //     }
+
+    //     if(ratingDelfin > vidaTigresa){
+    //         vidaTigresa = 0;
+    //     }else{
+    //         vidaTigresa = vidaTigresa - ratingDelfin;
+    //     }
+
+    //     cout << "Vida Delfin: " << vidaDelfin << endl;
+    //     cout << "Vida Tigresa: " << vidaTigresa << endl;
+    // }
+
+    // Un ciclo FOR se ejecuta una determinada cantidad de veces
+    for (int i = 0; i < 5; i++)
+    {
+        vidaDelfin = vidaDelfin - ratingTigresa;
+        vidaTigresa = vidaTigresa - ratingDelfin;
+        cout << "Vida Delfin: " << vidaDelfin << endl;
+        cout << "Vida Tigresa: " << vidaTigresa << endl;
+    }
+
+    if (vidaDelfin > vidaTigresa)
+    {
+        nivelDelfin = 10;
+        llaveDelfin = true;
+    }
+    else
+    {
+        nivelTigresa = 10;
+        llaveTigresa = true;
+    }
+
+    mostrarFichaTecnica(nombreDelfin, vidaDelfin, edadDelfin, nivelDelfin, ratingDelfin, llaveDelfin);
+    mostrarFichaTecnica(nombreTigresa, vidaTigresa, edadTigresa, nivelTigresa, ratingTigresa, llaveTigresa);
     return 0;
 }
