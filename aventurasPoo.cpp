@@ -3,6 +3,7 @@
 #include <cstdlib>
 using namespace std;
 
+// Variables globales
 int vida = 100;
 bool vivo = true;
 int danio = 0;
@@ -37,6 +38,7 @@ void verEstado(){
     cout << "Vida restante: " << vida << endl;
     cout << "Está Vivo? " << (vivo == true ? "Si": "No") << endl;
     cout << alerta << endl;
+    alerta = "";
 }
 
 int main(){
@@ -46,7 +48,7 @@ int main(){
 
     while (opcion != 5 && vivo)
     {
-        cout << "Selecciones su opción" << endl;
+        cout << "\nSeleccione su opción" << endl;
         cout << "[1] Avanzar." << endl;
         cout << "[2] Saltar." << endl;
         cout << "[3] Recibir Daño." << endl;
@@ -63,6 +65,7 @@ int main(){
                 saltar();
                 break;
             case 3:
+                cout << "Ingrese el daño a recibir: " << endl;
                 cin >> danio;
                 recibirDanio(danio);
                 break;
