@@ -5,6 +5,7 @@ using namespace std;
 
 int vida = 100;
 bool vivo = true;
+int danio = 0;
 
 void avanzar(){
     cout << "Poo avanza..." << endl;
@@ -62,7 +63,6 @@ int main(){
                 saltar();
                 break;
             case 3:
-                int danio = 0;
                 cin >> danio;
                 recibirDanio(danio);
                 break;
