@@ -8,20 +8,24 @@ int vida = 100;
 bool vivo = true;
 int danio = 0;
 
-void avanzar(){
+void avanzar()
+{
     cout << "Poo avanza..." << endl;
 }
 
-void saltar(){
+void saltar()
+{
     cout << "Poo salta..." << endl;
 }
 
-void recibirDanio(int danio){
+void recibirDanio(int danio)
+{
     // vida = vida - danio;
     // Forma abreviada de realizar una operación aritmética de suma o resta
     vida -= danio;
 
-    if (vida < 0) {
+    if (vida < 0)
+    {
         vida = 0;
         vivo = false;
     }
@@ -30,18 +34,26 @@ void recibirDanio(int danio){
     cout << "Su vida restante es " << vida << "." << endl;
 }
 
-void verEstado(){
+void verEstado()
+{
     string alerta = "";
-    if (0 < vida < 30) alerta = "Vida demasiado baja!";
+    if (0 < vida && vida <= 30)
+    {
+        alerta = "Vida demasiado baja!";
+    }
+    else
+    {
+        alerta = "";
+    }
 
     cout << "Estado de Poo" << endl;
     cout << "Vida restante: " << vida << endl;
-    cout << "Está Vivo? " << (vivo == true ? "Si": "No") << endl;
+    cout << "Está Vivo? " << (vivo == true ? "Si" : "No") << endl;
     cout << alerta << endl;
-    alerta = "";
 }
 
-int main(){
+int main()
+{
     SetConsoleOutputCP(CP_UTF8);
 
     int opcion = 0;
@@ -80,7 +92,6 @@ int main(){
                 cout << "Opción ingresada NO corresponde...\nIntente nuevamente..." << endl;
         }
     }
-    
 
     return 0;
 }
