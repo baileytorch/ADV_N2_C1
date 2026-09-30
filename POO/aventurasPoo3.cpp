@@ -1,33 +1,35 @@
 #include <iostream>
 #include <windows.h>
 #include <cstdlib>
+#include <vector>
 using namespace std;
 
-class Clase{
+class Equipamiento
+{
     private:
-        string nombre; // Clase Arquero, Guerrero, Paladín, Cazador
-        float modificadorVida;
-        float modificadorDanio;
-    
+        string nombreItem;
+        string descripcionItem;
+        int calidadItem;
+        int cantidadUsoItem;
+        int vidaItem;
     public:
-        Clase(string nombreClase, float modificadorVidaClase, float modificadorDanioClase):
-            nombre(nombreClase), modificadorVida(modificadorVidaClase), modificadorDanio(modificadorDanioClase){}
+        Equipamiento(string nombre,string descripcion,int calidad,int cantidadUso,int vida): 
+            nombreItem(nombre), descripcionItem(descripcion), calidadItem(calidad), cantidadUsoItem(cantidadUso), vidaItem(vida){}
         
-        string getNombreClase() const {return nombre;}
-        float getModificadorVida() const {return modificadorVida;}
+        string obtenerNombreItem() { return nombreItem;}
 };
-
 
 class Personaje{
     private:
-        string nombre;
-        float vida;
-        bool vivo;
-        float danio;
+        string nombrePersonaje;
+        int vidaPersonaje;
+        bool personajeVivo;
+        int danioPersonaje;
+        vector<Equipamiento> items;
 
     public:
-        Personaje(string nombreJugador,float vidaJugador,bool estaVivo,float danioJugador):
-            nombre(nombreJugador), vida(vidaJugador), vivo(estaVivo), danio(danioJugador){}
+        Personaje(string nombreJugador,int vidaJugador,bool estaVivo,int danioJugador):
+            nombrePersonaje(nombreJugador), vidaPersonaje(vidaJugador), personajeVivo(estaVivo), danioPersonaje(danioJugador){}
 
         void avanzar(string nombrePersonaje)
         {
@@ -39,24 +41,24 @@ class Personaje{
             cout << nombrePersonaje << " salta..." << endl;
         }
 
-        void recibirDanio(string nombrePersonaje, float danio)
+        void recibirDanio(string nombrePersonaje, int danio)
         {
-            vida -= danio;
+            vidaPersonaje -= danio;
 
-            if (vida < 0)
+            if (vidaPersonaje < 0)
             {
-                vida = 0;
-                vivo = false;
+                vidaPersonaje = 0;
+                personajeVivo = false;
             }
 
             cout << nombrePersonaje << " recibió " << danio << " de daño." << endl;
-            cout << "Su vida restante es " << vida << "." << endl;
+            cout << "Su vida restante es " << vidaPersonaje << "." << endl;
         }
 
         void verEstado(string nombrePersonaje)
         {
             string alerta = "";
-            if (0 < vida && vida <= 30)
+            if (0 < vidaPersonaje && vidaPersonaje <= 30)
             {
                 alerta = "Vida demasiado baja!";
             }
@@ -66,9 +68,16 @@ class Personaje{
             }
 
             cout << "Estado de " << nombrePersonaje << endl;
-            cout << "Vida restante: " << vida << endl;
-            cout << "Está Vivo? " << (vivo == true ? "Si" : "No") << endl;
+            cout << "Vida restante: " << vidaPersonaje << endl;
+            cout << "Está Vivo? " << (personajeVivo == true ? "Si" : "No") << endl;
             cout << alerta << endl;
+        }
+
+        void obtenerEquipamiento(Equipamiento item){
+            if(items.size() <= 6){
+                items.push_back(item);
+                cout << "Item obtenido: " << item.obtenerNombreItem() << endl; 
+            }
         }
 };
 
@@ -78,9 +87,9 @@ int main()
 
     int opcion = 0;
     string nombre = "";
-    float vida = 0;
+    int vida = 0;
     bool vivo = true;
-    float danio = 0;
+    int danio = 0;
 
     cout << "Indique el nombre de su personaje:" << endl;
     cin >> nombre;

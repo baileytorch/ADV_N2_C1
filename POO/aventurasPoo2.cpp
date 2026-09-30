@@ -7,10 +7,10 @@ class Personaje{
     // Los ATRIBUTOS de la clase son privados, sólo pertenecen a la clase
     // Los ATRIBUTOS indican CÓMO ES LA CLASE
     private:
-        string nombre;
-        int vida;
-        bool vivo;
-        int danio;
+        string nombrePersonaje;
+        int vidaPersonaje;
+        bool personajeVivo;
+        int danioPersonaje;
 
     // Para acceder a los atributos privados de la clase, crearemos MÉTODOS públicos
     // Los MÉTODOS indican QUE PUEDE HACER UN OBJETO DE ESA CLASE
@@ -18,7 +18,7 @@ class Personaje{
         // EL CONSTRUCTOR creará objetos basados en la clase cuando INSTANCIAMOS (invocamos) la clase
         // Este nos permite manejar el concepto ENCAPSULACIÓN
         Personaje(string nombreJugador,int vidaJugador,bool estaVivo,int danioJugador):
-            nombre(nombreJugador), vida(vidaJugador), vivo(estaVivo), danio(danioJugador){}
+            nombrePersonaje(nombreJugador), vidaPersonaje(vidaJugador), personajeVivo(estaVivo), danioPersonaje(danioJugador){}
 
         void avanzar(string nombrePersonaje)
         {
@@ -32,22 +32,22 @@ class Personaje{
 
         void recibirDanio(string nombrePersonaje, int danio)
         {
-            vida -= danio;
+            vidaPersonaje -= danio;
 
-            if (vida < 0)
+            if (vidaPersonaje < 0)
             {
-                vida = 0;
-                vivo = false;
+                vidaPersonaje = 0;
+                personajeVivo = false;
             }
 
             cout << nombrePersonaje << " recibió " << danio << " de daño." << endl;
-            cout << "Su vida restante es " << vida << "." << endl;
+            cout << "Su vida restante es " << vidaPersonaje << "." << endl;
         }
 
         void verEstado(string nombrePersonaje)
         {
             string alerta = "";
-            if (0 < vida && vida <= 30)
+            if (0 < vidaPersonaje && vidaPersonaje <= 30)
             {
                 alerta = "Vida demasiado baja!";
             }
@@ -57,8 +57,8 @@ class Personaje{
             }
 
             cout << "Estado de " << nombrePersonaje << endl;
-            cout << "Vida restante: " << vida << endl;
-            cout << "Está Vivo? " << (vivo == true ? "Si" : "No") << endl;
+            cout << "Vida restante: " << vidaPersonaje << endl;
+            cout << "Está Vivo? " << (personajeVivo == true ? "Si" : "No") << endl;
             cout << alerta << endl;
         }
 };
