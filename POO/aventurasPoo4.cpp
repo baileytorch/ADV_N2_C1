@@ -88,6 +88,39 @@ class Personaje{
         // }
 };
 
+// HERENCIA, la nueva clase tipo de personaje HEREDA desde Personaje...
+// ya tiene un nombre, una cantidad de vida, esta vivo, recibirá daño y tendrá equipamiento
+// pero cada tipo de personaje tendrá una forma distinta de atacar
+class Guerrero : public Personaje
+{
+    private:
+        /* data */
+    public:
+        void atacar(){
+            cout << "Ataca con espada" << endl;
+        }
+};
+
+class Arquero : public Personaje
+{
+    private:
+        /* data */
+    public:
+        void atacar(){
+            cout << "Ataca con arco y flecha" << endl;
+        }
+};
+
+class Mago : public Personaje
+{
+    private:
+        /* data */
+    public:
+        void atacar(){
+            cout << "Ataca con varita" << endl;
+        }
+};
+
 int main()
 {
     SetConsoleOutputCP(CP_UTF8);
