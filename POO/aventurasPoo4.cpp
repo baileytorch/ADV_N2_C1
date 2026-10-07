@@ -94,30 +94,45 @@ class Personaje{
 class Guerrero : public Personaje
 {
     private:
-        /* data */
+        string arma;
+        string armadura;
     public:
+        Guerrero(string nombreJugador,int vidaJugador,bool estaVivo,int danioJugador, string armaGuerrero, string armaduraGuerrero):
+            Personaje(nombreJugador, vidaJugador, estaVivo, danioJugador),
+            arma(armaGuerrero), armadura(armaduraGuerrero){}
+
         void atacar(){
-            cout << "Ataca con espada" << endl;
+            cout << "Ataca con " << arma << endl;
         }
 };
 
 class Arquero : public Personaje
 {
     private:
-        /* data */
+        string arma;
+        string armadura;
     public:
+        Arquero(string nombreJugador,int vidaJugador,bool estaVivo,int danioJugador, string armaArquero, string armaduraArquero):
+            Personaje(nombreJugador, vidaJugador, estaVivo, danioJugador),
+            arma(armaArquero), armadura(armaduraArquero){}
+
         void atacar(){
-            cout << "Ataca con arco y flecha" << endl;
+            cout << "Ataca con " << arma << endl;
         }
 };
 
 class Mago : public Personaje
 {
     private:
-        /* data */
+        string arma;
+        string armadura;
     public:
+        Mago(string nombreJugador,int vidaJugador,bool estaVivo,int danioJugador, string armaMago, string armaduraMago):
+            Personaje(nombreJugador, vidaJugador, estaVivo, danioJugador),
+            arma(armaMago), armadura(armaduraMago){}
+            
         void atacar(){
-            cout << "Ataca con varita" << endl;
+            cout << "Ataca con " << arma << endl;
         }
 };
 
@@ -127,10 +142,12 @@ int main()
 
     // Datos Personaje
     int opcion = 0;
+    int tipoPersonaje = 0;
     string nombrePersonaje = "";
     int vidaPersonaje = 0;
     bool personajeVivo = true;
     int danioPersonaje = 0;
+    Personaje* jugador = nullptr;
 
     // Datos Equipamiento
     string nombreEquipamiento = "Pergamino de Fuerza";
@@ -139,15 +156,53 @@ int main()
     int cantidadUso = 1;
     int vidaEquipamiento = 0;
 
-    cout << "Indique el nombre de su personaje:" << endl;
+    // Datos Tipo Guerrero
+    string armaSeleccionada;
+    string armaduraSeleccionada;
+
+    cout << "Indique el nombre de su personaje: " << endl;
     getline(cin, nombrePersonaje);
     cout << "Indique la vida incial de " << nombrePersonaje << ":" << endl;
     cin >> vidaPersonaje;
+
+    cout << "Qué tipo de personaje será " << nombrePersonaje << "?" << endl;
+    cout << "\nSeleccione su opción" << endl;
+        cout << "[1] Guerrero." << endl;
+        cout << "[2] Arquero." << endl;
+        cout << "[3] Mago." << endl;
+    cin >> tipoPersonaje;
+
+    switch (tipoPersonaje)
+    {
+        case 1:
+            armaSeleccionada = "Alabarda Témpano de Azufre";
+            armaduraSeleccionada = "Armadura de Malla";
+            jugador = new Guerrero(nombrePersonaje,vidaPersonaje,personajeVivo,danioPersonaje,armaSeleccionada,armaduraSeleccionada);
+            cout << nombrePersonaje << " ahora es un Guerrero" << endl;
+            cout << "Se protege con su " << armaduraSeleccionada << " y ataca con su " << armaSeleccionada << endl;
+            break;
+
+        case 2:
+            armaSeleccionada = "Hell's Poison Crossbow";
+            armaduraSeleccionada = "Ghillie Suit";
+            jugador = new Arquero(nombrePersonaje,vidaPersonaje,personajeVivo,danioPersonaje,armaSeleccionada,armaduraSeleccionada);
+            cout << nombrePersonaje << " ahora es un Guerrero" << endl;
+            cout << "Se protege con su " << armaduraSeleccionada << " y ataca con su " << armaSeleccionada << endl;
+            break;
+
+        case 3:
+            armaSeleccionada = "Necronomicón";
+            armaduraSeleccionada = "Hechizo de Protección";
+            jugador = new Mago(nombrePersonaje,vidaPersonaje,personajeVivo,danioPersonaje,armaSeleccionada,armaduraSeleccionada);
+            cout << nombrePersonaje << " ahora es un Guerrero" << endl;
+            cout << "Se protege con su " << armaduraSeleccionada << " y ataca con su " << armaSeleccionada << endl;
+            break;
+    }
     
-    Personaje jugador(nombrePersonaje, vidaPersonaje, personajeVivo, danioPersonaje);
+    // Personaje jugador(nombrePersonaje, vidaPersonaje, personajeVivo, danioPersonaje);
     Equipamiento pergamino(nombreEquipamiento,descripcionEquipamiento,calidadEquipamiento,cantidadUso,vidaEquipamiento);
 
-    while (opcion != 5 && personajeVivo)
+    while (opcion != 6 && personajeVivo)
     {
         cout << "\nSeleccione su opción" << endl;
         cout << "[1] Avanzar." << endl;
@@ -161,22 +216,22 @@ int main()
         switch (opcion)
         {
             case 1:
-                jugador.avanzar(nombrePersonaje);
+                jugador->avanzar(nombrePersonaje);
                 break;
             case 2:
-                jugador.saltar(nombrePersonaje);
+                jugador->saltar(nombrePersonaje);
                 break;
             case 3:
                 cout << "Ingrese el daño a recibir: " << endl;
                 cin >> danioPersonaje;
-                jugador.recibirDanio(nombrePersonaje,danioPersonaje);
+                jugador->recibirDanio(nombrePersonaje,danioPersonaje);
                 break;
             case 4:
-                jugador.verEstado(nombrePersonaje);
+                jugador->verEstado(nombrePersonaje);
                 break;
             case 5:
                 cout << "Encontramos un pergamino de fuerza..." << endl;
-                jugador.obtenerEquipamiento(pergamino);
+                jugador->obtenerEquipamiento(pergamino);
                 break;
             case 6:
                 cout << "Saliendo..." << endl;
