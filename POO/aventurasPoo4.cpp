@@ -80,6 +80,8 @@ class Personaje{
             }
         }
 
+        virtual void atacar(){};
+
         // void mostrarInventario() {
         //     cout << "Inventario actual: " << endl;
         //     for (const auto& equipo : items) {
@@ -101,7 +103,7 @@ class Guerrero : public Personaje
             Personaje(nombreJugador, vidaJugador, estaVivo, danioJugador),
             arma(armaGuerrero), armadura(armaduraGuerrero){}
 
-        void atacar(){
+        void atacar()override{
             cout << "Ataca con " << arma << endl;
         }
 };
@@ -116,7 +118,7 @@ class Arquero : public Personaje
             Personaje(nombreJugador, vidaJugador, estaVivo, danioJugador),
             arma(armaArquero), armadura(armaduraArquero){}
 
-        void atacar(){
+        void atacar()override{
             cout << "Ataca con " << arma << endl;
         }
 };
@@ -131,7 +133,7 @@ class Mago : public Personaje
             Personaje(nombreJugador, vidaJugador, estaVivo, danioJugador),
             arma(armaMago), armadura(armaduraMago){}
             
-        void atacar(){
+        void atacar()override{
             cout << "Ataca con " << arma << endl;
         }
 };
@@ -186,7 +188,7 @@ int main()
             armaSeleccionada = "Hell's Poison Crossbow";
             armaduraSeleccionada = "Ghillie Suit";
             jugador = new Arquero(nombrePersonaje,vidaPersonaje,personajeVivo,danioPersonaje,armaSeleccionada,armaduraSeleccionada);
-            cout << nombrePersonaje << " ahora es un Guerrero" << endl;
+            cout << nombrePersonaje << " ahora es un Arquero" << endl;
             cout << "Se protege con su " << armaduraSeleccionada << " y ataca con su " << armaSeleccionada << endl;
             break;
 
@@ -194,7 +196,7 @@ int main()
             armaSeleccionada = "Necronomicón";
             armaduraSeleccionada = "Hechizo de Protección";
             jugador = new Mago(nombrePersonaje,vidaPersonaje,personajeVivo,danioPersonaje,armaSeleccionada,armaduraSeleccionada);
-            cout << nombrePersonaje << " ahora es un Guerrero" << endl;
+            cout << nombrePersonaje << " ahora es un Mago" << endl;
             cout << "Se protege con su " << armaduraSeleccionada << " y ataca con su " << armaSeleccionada << endl;
             break;
     }
@@ -202,7 +204,7 @@ int main()
     // Personaje jugador(nombrePersonaje, vidaPersonaje, personajeVivo, danioPersonaje);
     Equipamiento pergamino(nombreEquipamiento,descripcionEquipamiento,calidadEquipamiento,cantidadUso,vidaEquipamiento);
 
-    while (opcion != 6 && personajeVivo)
+    while (opcion != 7 && personajeVivo)
     {
         cout << "\nSeleccione su opción" << endl;
         cout << "[1] Avanzar." << endl;
@@ -210,7 +212,8 @@ int main()
         cout << "[3] Recibir Daño." << endl;
         cout << "[4] Revisar Estado " << nombrePersonaje << "." << endl;
         cout << "[5] Entregar Pergamino." << endl;
-        cout << "[6] Salir." << endl;
+        cout << "[6] Atacar." << endl;
+        cout << "[7] Salir." << endl;
         cin >> opcion;
 
         switch (opcion)
@@ -234,6 +237,9 @@ int main()
                 jugador->obtenerEquipamiento(pergamino);
                 break;
             case 6:
+                jugador->atacar();
+                break;
+            case 7:
                 cout << "Saliendo..." << endl;
                 exit(0);
                 break;
