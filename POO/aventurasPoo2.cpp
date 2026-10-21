@@ -17,8 +17,8 @@ class Personaje{
     public:
         // EL CONSTRUCTOR creará objetos basados en la clase cuando INSTANCIAMOS (invocamos) la clase
         // Este nos permite manejar el concepto ENCAPSULACIÓN
-        Personaje(string nombreJugador,int vidaJugador,bool estaVivo,int danioJugador):
-            nombrePersonaje(nombreJugador), vidaPersonaje(vidaJugador), personajeVivo(estaVivo), danioPersonaje(danioJugador){}
+        Personaje(string nomPer,int vidaPer,bool estaVivoPer,int danioPer):
+            nombrePersonaje(nomPer), vidaPersonaje(vidaPer), personajeVivo(estaVivoPer), danioPersonaje(danioPer){}
 
         void avanzar(string nombrePersonaje)
         {
