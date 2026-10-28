@@ -4,12 +4,12 @@
 #include "Nave.h"
 #include <string>
 
-class NaveEnemigo: public Nave
+class NaveJugador: public Nave
 {
 private:
     int escudo;
 public:
-    NaveEnemigo(
+    NaveJugador(
         string nombre
     );
     

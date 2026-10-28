@@ -10,13 +10,13 @@ protected:
     string nombre;
     int vida;
     int ataque;
+
 public:
     Nave(string nom, int vid, int atq);
     virtual ~Nave();
 
     virtual void disparar(
-        Nave* objetivo
-    ) = 0;
+        Nave *objetivo) = 0;
 
     void recibirDanio(int danio);
 
