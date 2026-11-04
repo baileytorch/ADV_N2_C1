@@ -5,31 +5,34 @@ using namespace std;
 
 Juego::Juego():
 
-jugador("Phoenix")
+jugador("Phoenix", 100, 15)
 
 {
     for (int i = 0; i < 10; i++)
     {
-        NaveEnemigo enemigo(to_string(i), 50, 5);
-        enemigos.push_back(enemigo);
+        enemigos.emplace_back(to_string(i), 50, 5);
     }
 
-    NaveEnemigo jefeFinal("Estrella de la Muerte", 300, 10);
-    enemigos.push_back(jefeFinal);    
+    enemigos.emplace_back("Estrella de la Muerte", 300, 10);
 }
 
 void Juego::iniciar(){
-    cout << "Sapce Defenders 2026" << endl;
+    cout << "Space Defenders ADV-N2-C1 2026" << endl;
 
     cout << "Comienza la batalla!" << endl;
 
-    for (auto enemigo : enemigos)
+    for (auto& enemigo : enemigos)
     {
         cout << "Aparece " << enemigo.getNombre() << endl;
 
         while (jugador.estaViva() && enemigo.getVida() > 0)
         {
-            // jugador.disparar();
+            jugador.disparar(&enemigo);
+            enemigo.verEstado();
+
+            if(enemigo.estaViva()){
+                enemigo.disparar(&jugador);
+            }
         }
         
     }

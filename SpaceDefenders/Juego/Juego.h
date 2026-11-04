@@ -11,12 +11,11 @@ class Juego
 {
 private:
     NaveJugador jugador;
-
     vector<NaveEnemigo> enemigos;
 
 public:
     Juego(/* args */);
-    ~Juego();
+    ~Juego() = default;
 
     void iniciar();
 };

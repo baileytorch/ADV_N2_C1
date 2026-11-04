@@ -10,7 +10,7 @@ private:
     int escudo;
 public:
     NaveJugador(
-        string nombre
+        string nombre, int vida, int ataque
     );
     
     void disparar(

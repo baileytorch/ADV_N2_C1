@@ -1,8 +1,8 @@
 #include "NaveJugador.h"
 #include <iostream>
 
-NaveJugador::NaveJugador(string nombre):
-Nave(nombre,100,15){
+NaveJugador::NaveJugador(string nombre, int vida, int ataque):
+Nave(nombre,vida,ataque){
     escudo = 10;
 };
 
