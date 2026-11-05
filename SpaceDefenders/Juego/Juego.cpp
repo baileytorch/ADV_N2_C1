@@ -49,5 +49,5 @@ void Juego::iniciar(){
     }
     
     cout << jugador.getNombre() << " se ha alzado con la vitoria!" << endl;
-    cout << "Eres el combatiente supremo de SapceDefenders!" << endl;
+    cout << "Eres el combatiente supremo de SpaceDefenders!" << endl;
 }
