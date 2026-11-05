@@ -32,9 +32,22 @@ void Juego::iniciar(){
 
             if(enemigo.estaViva()){
                 enemigo.disparar(&jugador);
+                jugador.verEstado();
             }
         }
         
+        if (!jugador.estaViva())
+        {
+            cout << "Game Over!" << endl;
+            return;
+        }
+        
+        if (!enemigo.estaViva())
+        {
+            cout << "Enemigo " << enemigo.getNombre() << " destruido..." << endl;
+        }        
     }
     
+    cout << jugador.getNombre() << " se ha alzado con la vitoria!" << endl;
+    cout << "Eres el combatiente supremo de SapceDefenders!" << endl;
 }
