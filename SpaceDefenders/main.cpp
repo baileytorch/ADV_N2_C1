@@ -2,6 +2,8 @@
 
 int main(){
     Juego jueguito;
+
     jueguito.iniciar();
+    
     return 0;
 }

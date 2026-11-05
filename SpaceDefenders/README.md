@@ -66,3 +66,9 @@
                 ```
                 enemigos.push_back(jefeFinal);
                 ```
+
+## Error de Compilación ##
+
+Los archivos sí existen. El problema es que el proyecto está dentro de SpaceDefenders, así que compilar desde la carpeta raíz del workspace no encuentra main.cpp. Además, hay que compilar todos los archivos .cpp, no solo main.cpp.
+
+La compilación completa funcionó desde la carpeta SpaceDefenders, incluyendo Juego.cpp y los .cpp de Entidades. El #include "Juego/Juego.h" de main.cpp está bien; ejecuta la compilación desde esa carpeta o configura Code Runner para usarla como directorio de trabajo y agregar los demás archivos fuente.
